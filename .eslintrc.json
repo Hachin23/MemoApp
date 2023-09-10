@@ -13,6 +13,6 @@
             2, { "namedComponents": "function-declaration" }
         ],
         "no-use-before-define": 0,
-        "linebreak-style": ["error", "windows"]
+        "linebreak-style": ["error", "windows"],
     }
 }
