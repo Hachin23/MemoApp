@@ -3,18 +3,20 @@ import {
   View, Text, TextInput, StyleSheet, KeyboardAvoidingView,
 } from 'react-native';
 
-import AppBar from '../components/AppBar';
 import CircleButton from "../components/CircleButton";
 // mport KeyboardSafeView from "../components/KeyboardSafeView";
 
-export default function MemoEditScreen() {
+export default function MemoEditScreen(props) {
+  const { navigation } = props;
   return (
     <KeyboardAvoidingView style={styles.container} behavior="height">
-      <AppBar />
       <View style={styles.inputContainer}>
         <TextInput value="買い物リスト" multiline style={styles.input} />
       </View>
-      <CircleButton name="check" />
+      <CircleButton
+        name="check"
+        onPress={() => { navigation.goBack() }}
+      />
     </KeyboardAvoidingView>
   );
 }
