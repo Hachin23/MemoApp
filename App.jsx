@@ -14,11 +14,13 @@ import { firebaseConfig } from './env'
 // Reactの開発ではタブ幅=2スペースが推奨されているためSettingを修正する。
 // cardStyleInterpolator　https://reactnavigation.org/docs/stack-navigator/#pre-made-configs
 
-const Stack = createStackNavigator();
+require('firebase/firestore');
 
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
