@@ -1,5 +1,8 @@
 import React from "react";
-import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
+import {
+/* eslint-disable-next-line */
+  TouchableOpacity, View, Text, StyleSheet
+} from "react-native";
 import { string, func, shape } from "prop-types";
 
 export default function Button(props) {
@@ -20,13 +23,13 @@ Button.propTypes = {
 Button.defaultProps = {
   onPress: null,
   style: null,
-}
+};
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    backgroundColor: '#467FD3',
+    backgroundColor: "#467FD3",
     borderRadius: 4,
-    alignSelf: 'flex-start',
+    alignSelf: "flex-start",
     marginBottom: 24,
   },
   buttonLabel: {
@@ -34,6 +37,6 @@ const styles = StyleSheet.create({
     lineHeight: 32,
     paddingVertical: 8,
     paddingHorizontal: 32,
-    color: '#ffffff',
+    color: "#ffffff",
   },
 });

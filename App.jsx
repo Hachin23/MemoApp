@@ -1,20 +1,20 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
-import firebase from 'firebase';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator, CardStyleInterpolators } from "@react-navigation/stack";
+import firebase from "firebase";
 
-import MemoListScreen from './src/screens/MemoListScreen';
-import MemoDetailScreen from './src/screens/MemoDetailScreen';
-import MemoEditScreen from './src/screens/MemoEditScreen';
-import MemoCreateScreen from './src/screens/MemoCreateScreen';
-import LogInScreen from './src/screens/LogInScreen';
-import SignUpScreen from './src/screens/SignUpScreen';
+import MemoListScreen from "./src/screens/MemoListScreen";
+import MemoDetailScreen from "./src/screens/MemoDetailScreen";
+import MemoEditScreen from "./src/screens/MemoEditScreen";
+import MemoCreateScreen from "./src/screens/MemoCreateScreen";
+import LogInScreen from "./src/screens/LogInScreen";
+import SignUpScreen from "./src/screens/SignUpScreen";
 
-import { firebaseConfig } from './env'
+import { firebaseConfig } from "./env";
 // Reactの開発ではタブ幅=2スペースが推奨されているためSettingを修正する。
-// cardStyleInterpolator　https://reactnavigation.org/docs/stack-navigator/#pre-made-configs
+// cardStyleInterpolator https://reactnavigation.org/docs/stack-navigator/#pre-made-configs
 
-require('firebase/firestore');
+require("firebase/firestore");
 
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
@@ -28,15 +28,15 @@ export default function App() {
       <Stack.Navigator
         initialRouteName="LogIn"
         screenOptions={{
-          headerStyle: { backgroundColor: '#467FD3'},
-          headerTitleStyle: { color: '#ffffff'},
-          headerTitle: 'Memo App',
-          headerTitleAlign: 'center',
-          headerBackTitle: 'Back',
-          //画面遷移の時に横に遷移する
+          headerStyle: { backgroundColor: "#467FD3" },
+          headerTitleStyle: { color: "#ffffff" },
+          headerTitle: "Memo App",
+          headerTitleAlign: "center",
+          headerBackTitle: "Back",
+          // 画面遷移の時に横に遷移する
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           gestureEnabled: true,
-          gestureDirection: 'horizontal',
+          gestureDirection: "horizontal",
         }}
       >
         <Stack.Screen name="MemoList" component={MemoListScreen} />

@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, StyleSheet, ActivityIndicator } from 'react-native';
-import { bool } from 'prop-types';
+import React from "react";
+import { View, StyleSheet, ActivityIndicator } from "react-native";
+import { bool } from "prop-types";
 
 export default function Loading(props) {
   const { isLoading } = props;
@@ -10,35 +10,35 @@ export default function Loading(props) {
   return (
     <View style={styles.container}>
       <View>
-        <ActivityIndicator size='large' color='#000000' />
+        <ActivityIndicator size="large" color="#000000" />
       </View>
     </View>
   );
 }
 
 Loading.propTypes = {
-  isLoading: bool
+  isLoading: bool,
 };
 
 Loading.defaultProps = {
   isLoading: false,
-}
+};
 
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
+    position: "absolute",
+    width: "100%",
+    height: "100%",
     top: 0,
     right: 0,
     bottom: 0,
     left: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(255, 255, 255, 0.5)",
     zIndex: 5,
   },
   inner: {
     marginBottom: 80,
-  }
-})
+  },
+});

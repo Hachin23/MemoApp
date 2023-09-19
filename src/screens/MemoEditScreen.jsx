@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import {
+/* eslint-disable-next-line */
   View, Text, TextInput, StyleSheet, KeyboardAvoidingView, Alert
-} from 'react-native';
-import { shape, string } from 'prop-types';
-import firebase from 'firebase';
+} from "react-native";
+import { shape, string } from "prop-types";
+import firebase from "firebase";
 
 import CircleButton from "../components/CircleButton";
 import KeyboardSafeView from "../components/KeyboardSafeView";
@@ -22,7 +23,7 @@ export default function MemoEditScreen(props) {
       ref.set({
         bodyText: body,
         updatedAt: new Date(),
-        //すべての値を更新しない場合は↓のように{ merage: true}を入れて指定した値のみ更新する
+        // すべての値を更新しない場合は↓のように{ merage: true}を入れて指定した値のみ更新する
       }, { merge: true })
         .then(() => {
           navigation.goBack();
@@ -54,7 +55,7 @@ export default function MemoEditScreen(props) {
 
 MemoEditScreen.propTypes = {
   route: shape({
-      params: shape({id: string}),
+    params: shape({ id: string }),
   }).isRequired,
 };
 
@@ -69,8 +70,8 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    textAlignVertical: 'top',
+    textAlignVertical: "top",
     fontSize: 16,
     lineHeight: 24,
-  }
+  },
 });

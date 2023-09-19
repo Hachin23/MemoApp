@@ -1,25 +1,23 @@
 import React, { useState } from "react";
 import {
-  View, Text, TextInput, StyleSheet, TouchableOpacity, Alert
-} from 'react-native';
-import firebase from 'firebase';
+  View, Text, TextInput, StyleSheet, TouchableOpacity, Alert,
+} from "react-native";
+import firebase from "firebase";
 
 import Button from "../components/Button";
 import { translateErrors } from "../utils";
 
 export default function SignUpScreen(props) {
   const { navigation } = props;
-  const [ email, setEmail ] = useState('');
-  const [ password, setPassword ] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   function handlePress() {
     firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then((userCredentiall) => {
-        const { user } = userCredentiall;
-        console.log(user.uid);
+      .then(() => {
         navigation.reset({
           index: 0,
-          routes: [{ name: 'MemoList' }],
+          routes: [{ name: "MemoList" }],
         });
       })
       .catch((error) => {
@@ -29,13 +27,13 @@ export default function SignUpScreen(props) {
   }
 
   return (
-    <View style={ styles.container}>
+    <View style={styles.container}>
       <View style={styles.inner}>
         <Text style={styles.title}>Sign Up</Text>
         <TextInput
           style={styles.input}
           value={email}
-          onChangeText={(text) => { setEmail(text)}}
+          onChangeText={(text) => { setEmail(text); }}
           autoCapitalize="none"
           keyboardType="email-address"
           placeholder="Email Address"
@@ -43,8 +41,8 @@ export default function SignUpScreen(props) {
         />
         <TextInput
           style={styles.input}
-          value={ password }
-          onChangeText={(text) => { setPassword(text)}}
+          value={password}
+          onChangeText={(text) => { setPassword(text); }}
           autoCapitalize="none"
           placeholder="Password"
           secureTextEntry
@@ -56,10 +54,11 @@ export default function SignUpScreen(props) {
         />
         <View style={styles.footer}>
           <Text style={styles.footerText}>Already registered?</Text>
-          <TouchableOpacity onPress={() => { navigation.reset({
-            index: 0,
-            routes: [{ name: 'LogIn'}],
-            })
+          <TouchableOpacity onPress={() => {
+            navigation.reset({
+              index: 0,
+              routes: [{ name: "LogIn" }],
+            });
           }}
           >
             <Text style={styles.footerLink}>Log In.</Text>
@@ -72,8 +71,8 @@ export default function SignUpScreen(props) {
 
 const styles = StyleSheet.create({
   container: {
-      flex: 1,
-      backgroundColor: '#F0F4F8',
+    flex: 1,
+    backgroundColor: "#F0F4F8",
   },
   inner: {
     paddingHorizontal: 27,
@@ -82,15 +81,15 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     lineHeight: 32,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 24,
   },
   input: {
     fontSize: 16,
     height: 48,
-    borderColor: '#DDDDDD',
+    borderColor: "#DDDDDD",
     borderWidth: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: "#ffffff",
     paddingHorizontal: 8,
     marginBottom: 16,
   },
@@ -102,9 +101,9 @@ const styles = StyleSheet.create({
   footerLink: {
     fontSize: 14,
     lineHeight: 24,
-    color: '#467FD3',
+    color: "#467FD3",
   },
   footer: {
-    flexDirection: 'row',
-  }
+    flexDirection: "row",
+  },
 });

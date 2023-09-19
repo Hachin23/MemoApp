@@ -1,33 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
-  View, Text, TextInput, StyleSheet, KeyboardAvoidingView
-} from 'react-native';
+/* eslint-disable-next-line */
+  View, Text, TextInput, StyleSheet, KeyboardAvoidingView, Alert
+} from "react-native";
 
-import firebase from 'firebase';
+import firebase from "firebase";
 
 import CircleButton from "../components/CircleButton";
 import KeyboardSafeView from "../components/KeyboardSafeView";
+import { translateErrors } from "../utils";
 
 export default function MemoCreateScreen(props) {
   const { navigation } = props;
-  const [ bodyText, setBodyText ] = useState('');
+  const [bodyText, setBodyText] = useState("");
 
   function handlePress() {
     const { currentUser } = firebase.auth();
     const db = firebase.firestore();
     const ref = db.collection(`users/${currentUser.uid}/memos`);
-    //keyとvalueが同じ場合は省略可能(bodyText: bodyText ⇒ bodyText)
+    // keyとvalueが同じ場合は省略可能(bodyText: bodyText ⇒ bodyText)
     ref.add({
       bodyText,
-      //date型はfirebaseに登録するとtimestamp型として登録される
+      // date型はfirebaseに登録するとtimestamp型として登録される
       updatedAt: new Date(),
     })
-      .then((docRef) => {
-        console.log('Created', docRef.id);
+      .then(() => {
         navigation.goBack();
       })
       .catch((error) => {
-        console.log('Error', error)
+        const errorMsg = translateErrors(error.code);
+        Alert.alert(errorMsg.title, errorMsg.description);
       });
   }
 
@@ -61,8 +63,8 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    textAlignVertical: 'top',
+    textAlignVertical: "top",
     fontSize: 16,
     lineHeight: 24,
-  }
+  },
 });

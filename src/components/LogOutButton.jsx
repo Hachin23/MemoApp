@@ -1,31 +1,35 @@
-import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, Alert
-} from 'react-native';
-import firebase from 'firebase';
-import { useNavigation } from '@react-navigation/native';
+import React from "react";
+import {
+  TouchableOpacity, Text, StyleSheet, Alert,
+} from "react-native";
+import firebase from "firebase";
+import { useNavigation } from "@react-navigation/native";
 
 export default function LogOutButton() {
-  //React Fooksは関数の直下に定義しないとエラーになる。
+  // React Fooksは関数の直下に定義しないとエラーになる。
   const navigation = useNavigation();
 
   function handlePress() {
     firebase.auth().signOut()
       .then(() => {
-        navigation.reset( {
+        navigation.reset({
           index: 0,
-          routes: [{ name: 'LogIn'}],
-        })
+          routes: [{ name: "LogIn" }],
+        });
       })
       .catch(() => {
-        Alert.alert('ログアウに失敗しました。')
+        Alert.alert("ログアウに失敗しました。");
       });
   }
 
   return (
-    <TouchableOpacity onPress={handlePress} style={ styles.container}>
-      <Text style={ styles.label}>ログアウト</Text>
+    <TouchableOpacity
+      onPress={handlePress}
+      style={styles.container}
+    >
+      <Text style={styles.label}>ログアウト</Text>
     </TouchableOpacity>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -35,6 +39,6 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 14,
-    color: 'rgba(255, 255, 255, 0.7)',
+    color: "rgba(255, 255, 255, 0.7)",
   },
-})
+});
