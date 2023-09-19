@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   },
   memoInner: {
     flex: 1,
-  }
+  },
   memoListItemTitle: {
     fontSize: 16,
     lineHeight: 32,
